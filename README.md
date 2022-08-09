@@ -74,3 +74,5 @@ expect( screen.getByText('Crear Cita') ).toBeInTheDocument()
 
 ```
 </p>
+
+Si tenemos un componente montado y hacemos otro test, podemos limpiarlo para que no cargue la memoria, eso se hace usando una funcion llamada ```cleanup``` que la importamos de ```@testing-library/react``` y lo hacemos colocando esta funcion ```afterEach(cleanup);```, entonces cada vez que temina un test se limpia el componente.. Esto en las ultimas versiones ya no es necesario.
