@@ -32,3 +32,45 @@ También le puedes hacer un testing a la aplicación completa y ver cómo se com
 
 <p>Al componente que se le quiera hacer la prueba, haces otro archivo llamado con el nombre del componente seguido de test, ejemplo si queremos hacer test a App.js, creamos el archivo App.test.js o App.spec.js</p>
 <p>Tambien podemos crear una carpeta para incluir ahí todos los tests, __tests__ todo lo que esté dentro de esta carpera React lo va a reconocer como componentes de prueba. </p>
+
+<h2>¿Cómo ejecutar un test?</h2>
+<p>Detro del archivo que creamos ponemos 
+
+```
+test('lo que hace el test', ()=>{
+    'callback que ejecuta lo que querramos'
+    console.log('Hola mundo')
+})
+```
+
+Tambien se puede usar  ```it```
+
+
+```
+it('lo que hace el test', ()=>{
+    'callback que ejecuta lo que querramos'
+    console.log('Hola mundo')
+})
+```
+
+</p>
+
+<p>Para averiguar si un texto o cadena de texto exista en el documento se puede
+hacer:
+
+```
+const { getByText } = render(<Formulario />);
+expect( getByText('Crear Cita') ).toBeInTheDocument()
+
+```
+Donde ```expect``` es la funcion que recibe lo que esperas que haga el test.
+la funcion ```toBeInTheDocument``` verifica si eso que recibe el ```expect``` exista en ese documento.
+
+Hay otra manera mas nueva de hacer lo mismo, en lugar de usar ```getByText``` usamos ```screen ``` que lo importamos de ```@testing-library/react```, y el codigo quedaria asi:
+
+```
+render(<Formulario />);
+expect( screen.getByText('Crear Cita') ).toBeInTheDocument()
+
+```
+</p>
