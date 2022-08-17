@@ -47,3 +47,38 @@ test('<App/> Validar titulo dinamico', ()=>{
 
     expect(screen.getByTestId('titulo-dinamico').textContent).not.toBe('No hay citas')
 });
+
+
+test('<App/> Verificar citas en el DOM', async ()=>{
+  
+    render(<App/>);
+
+    const citas = await screen.findAllByTestId('cita')
+    // expect(citas).toMatchSnapshot();//escribe un archivo nuevo para verificar su contenido
+
+
+    expect(screen.getByTestId('btn-eliminar').tagName).toBe('BUTTON')
+    expect(screen.getByTestId('btn-eliminar')).toBeInTheDocument()
+
+    // veridicar una cita
+
+    expect(screen.getByText('Hook')).toBeInTheDocument();
+});
+
+test('<App/> Elimianr la cita', ()=>{
+  
+    render(<App />);
+
+    const btnElimianr = screen.getByTestId('btn-eliminar')
+    expect(btnElimianr.tagName).toBe('BUTTON')
+    expect(btnElimianr).toBeInTheDocument()
+    //    simular el click
+    userEvent.click(btnElimianr);
+
+    //el boton no debe estar
+    expect(btnElimianr).not.toBeInTheDocument();
+
+     // veridicar una cita no esté en el documento
+
+     expect(screen.queryByText('Hook')).not.toBeInTheDocument();
+});
