@@ -28,7 +28,6 @@ const Formulario = ({crearCita}) => {
     // Cuando el usuario presiona agregar cita
     const submitCita = e => {
         e.preventDefault();
-
         // Validar
         if(mascota.trim() === '' || propietario.trim() === ''  || fecha.trim() === ''  || hora.trim() === ''  || sintomas.trim() === '' ){
             actualizarError(true);
@@ -41,6 +40,7 @@ const Formulario = ({crearCita}) => {
         cita.id = uuid();
 
         // Crear la cita
+       
         crearCita(cita);
 
         // Reiniciar el form
@@ -66,6 +66,7 @@ const Formulario = ({crearCita}) => {
                 <input 
                     type="text"
                     name="mascota"
+                    data-testid="mascota"
                     className="u-full-width"
                     placeholder="Nombre Mascota"
                     onChange={actualizarState}
@@ -76,6 +77,7 @@ const Formulario = ({crearCita}) => {
                 <input 
                     type="text"
                     name="propietario"
+                    data-testid="propietario"
                     className="u-full-width"
                     placeholder="Nombre  Dueño de la mascota"
                     onChange={actualizarState}
@@ -86,6 +88,7 @@ const Formulario = ({crearCita}) => {
                 <input 
                     type="date"
                     name="fecha"
+                    data-testid="fecha"
                     className="u-full-width"
                     onChange={actualizarState}
                     value={fecha}
@@ -95,6 +98,7 @@ const Formulario = ({crearCita}) => {
                 <input 
                     type="time"
                     name="hora"
+                    data-testid="hora"
                     className="u-full-width"
                     onChange={actualizarState}
                     value={hora}
@@ -104,6 +108,7 @@ const Formulario = ({crearCita}) => {
                 <textarea
                     className="u-full-width"
                     name="sintomas"
+                    data-testid="sintomas"
                     onChange={actualizarState}
                     value={sintomas}
                 ></textarea>
